@@ -1,6 +1,4 @@
-# Vandal (Working Title) Frontend
-React
-
+# Vandal {working title} Frontend
 ## Installation
 
 ```
