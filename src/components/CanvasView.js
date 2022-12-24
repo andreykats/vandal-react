@@ -33,7 +33,11 @@ function CanvasView(props) {
         var base64String = img.replace("data:", "").replace(/^.+,/, "");
         var name = filename + ".jpg"
         // console.log(base64String)
-        upload(name, props.item["id"], base64String)
+        if (props.item["id"] === props.item["base_layer_id"]) {
+            upload(name, "_", base64String)
+        } else {
+            upload(name, props.item["id"], base64String)
+        }
     }
 
     function upload(filename, parentname, filedata) {
@@ -104,5 +108,6 @@ function CanvasView(props) {
         </div >
     )
 }
+
 
 export default CanvasView;
