@@ -2,37 +2,115 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* canvas {
+  border: 2px solid rgb(0, 47, 255);
+} */
+.title {
+  font-size: 40px;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.heading {
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#img {
+  width: 500px;
+  margin: 20px;
+}
+
+#button-save {
+  border: 1px solid #333;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  background-color: #333;
+  padding: 10px;
+}
+
+#button-cancel {
+  border: 1px solid #333;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  background-color: rgb(127, 127, 127);
+  padding: 10px;
+}
+
+#button-new {
+  width: 400px;
+  height: 400px;
+  margin: 20px;
+}
+
+.cell-single {
+  /* border: 2px solid rgb(255, 0, 0); */
+}
+
+.cell-stack {
+  /* border: 2px solid rgb(0, 0, 255); */
+}
+
+.flex-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 20px;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* border: 2px solid rgb(0, 255, 0); */
 }
 
-.App-link {
-  color: #61dafb;
+.flex-row {
+  display: flex;
+  margin: 20px;
+  /* border: 2px solid rgb(0, 255, 0); */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flex-child {
+  /* display: flex; */
+  /* border: 2px solid rgb(255, 0, 0); */
+}
+
+.flex-draw {
+  display: flex;
+  position: absolute;
+  /* border: 2px solid rgb(225, 255, 0); */
+}
+
+/* .stack {
+  position: absolute;
+} */
+
+.flex-toolbar {
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid rgb(255, 0, 0); */
+}
+
+/* .outer {
+  border: 2px solid rgb(26, 255, 0);
+} */
+
+.inner {
+  display: flex;
+  /* position: absolute; */
+}
+
+.under {
+  position: absolute;
+  /* left: 0px; */
+  /* top: 0px; */
+  z-index: -1;
+}
+
+.over {
+  z-index: -1;
 }
