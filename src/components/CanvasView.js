@@ -1,7 +1,7 @@
 // import React, { useState, useEffect } from 'react';
 import { fabric } from "fabric";
 import axios from 'axios';
-import { API_URL } from '../constants';
+import { API_URL, API_SUBMIT_IMAGE } from '../constants';
 
 function CanvasView(props) {
     var canvas;
@@ -17,6 +17,7 @@ function CanvasView(props) {
 
         selectRed();
 
+        // Set canvas size based on the size of the base_layer image
         const layer = document.getElementById('base-layer').getBoundingClientRect();
         canvas.setWidth(layer.width);
         canvas.setHeight(layer.height);
@@ -28,46 +29,25 @@ function CanvasView(props) {
         props.setSelection()
     }
 
-    function save(filename) {
+    function submitImage() {
+        // Create a binary string from canvas
         var img = canvas.toDataURL();
         var base64String = img.replace("data:", "").replace(/^.+,/, "");
-        var name = filename + ".jpg"
-        // console.log(base64String)
-        if (props.item["id"] === props.item["base_layer_id"]) {
-            upload(name, "_", base64String)
-        } else {
-            upload(name, props.item["id"], base64String)
-        }
-    }
 
-    function upload(filename, parentname, filedata) {
+        // Create a form and populate fields
         var formData = new FormData();
-        formData.append("filename", filename);
-        formData.append("parentname", parentname);
-        formData.append("filedata", filedata);
-        // console.log(formData)
-        axios.post(API_URL + "art/upload", formData, {})
+        formData.append("item_id", props.item["id"]);
+        formData.append("user_id", 99);
+        formData.append("image_data", base64String);
+
+        // Perform request
+        axios.post(API_URL + API_SUBMIT_IMAGE, formData, {})
             .then(result => {
                 console.log(result)
                 homescreen()
             }).catch((err) => {
                 console.log(err);
                 alert("Upload img error: " + err.message);
-            });
-    }
-
-    function create() {
-        axios.post(API_URL + "art/", {
-            "name": props.item["name"],
-            "owner_id": 99,
-            "base_layer_id": props.item["base_layer_id"]
-        })
-            .then(result => {
-                console.log(result)
-                save(result.data["id"])
-            }).catch((err) => {
-                console.log(err);
-                alert("Create item error: " + err.message);
             });
     }
 
@@ -99,7 +79,7 @@ function CanvasView(props) {
                 </div>
             </div>
             <div className="flex-toolbar">
-                <button id="button-save" onClick={create}>Save</button>
+                <button id="button-save" onClick={submitImage}>Save</button>
                 <button id="button-red" onClick={selectRed}>Red</button>
                 <button id="button-green" onClick={selectGreen}>Green</button>
                 <button id="button-blue" onClick={selectBlue}>Blue</button>
