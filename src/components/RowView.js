@@ -16,7 +16,7 @@ function RowView(props) {
 
     function get(id) {
         console.log("request: " + id)
-        axios.get(API_URL + "art/row/" + id)
+        axios.get(API_URL + "art/feed/" + id)
             .then(result => {
                 console.log(result.data)
                 setItems(result.data)

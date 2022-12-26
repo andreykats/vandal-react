@@ -1,7 +1,6 @@
-// import React, { useState, useEffect } from 'react';
 import { fabric } from "fabric";
 import axios from 'axios';
-import { API_URL, API_SUBMIT_IMAGE } from '../constants';
+import { API_IMAGES, API_SUBMIT } from '../constants';
 
 function CanvasView(props) {
     var canvas;
@@ -11,7 +10,7 @@ function CanvasView(props) {
     }
 
     function initCanvas() {
-        canvas = new fabric.Canvas('sheet');
+        canvas = new fabric.Canvas('canvas-sheet');
         canvas.isDrawingMode = true;
         canvas.freeDrawingBrush.width = 10;
 
@@ -41,7 +40,7 @@ function CanvasView(props) {
         formData.append("image_data", base64String);
 
         // Perform request
-        axios.post(API_URL + API_SUBMIT_IMAGE, formData, {})
+        axios.post(API_SUBMIT, formData, {})
             .then(result => {
                 console.log(result)
                 homescreen()
@@ -71,11 +70,11 @@ function CanvasView(props) {
         <div>
             <div className="flex-container">
                 <div className="flex-draw">
-                    <img className="under" id="base-layer" src={API_URL + "images/" + props.item["base_layer_id"] + ".jpg"} alt="" onLoad={didLoad}></img>
-                    <img className="over" src={API_URL + "images/" + props.item["id"] + ".jpg"} alt=""></img>
+                    <img className="under" id="base-layer" src={API_IMAGES + props.item["base_layer_id"] + ".jpg"} alt="" onLoad={didLoad}></img>
+                    <img className="over" src={API_IMAGES + props.item["id"] + ".jpg"} alt=""></img>
                 </div>
                 <div>
-                    <canvas id="sheet"></canvas>
+                    <canvas id="canvas-sheet"></canvas>
                 </div>
             </div>
             <div className="flex-toolbar">

@@ -15,7 +15,7 @@ function GridView(props) {
     })
 
     function get() {
-        axios.get(API_URL + "art/row/")
+        axios.get(API_URL + "art/feed/")
             .then(result => {
                 // console.log(result.data)
                 setItems(result.data)
