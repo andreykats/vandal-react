@@ -29,7 +29,7 @@ function RowView(props) {
     return (
         <div>
             <div className="title">
-                Decided to distroy "{props.item["name"]}", eh?
+                Decided to destroy "{props.item["name"]}", eh?
             </div>
             <div className="heading">
                 You monster
