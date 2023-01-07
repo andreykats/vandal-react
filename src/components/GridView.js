@@ -31,7 +31,7 @@ function GridView(props) {
                 Welcome you stinkin' Vandal
             </div>
             <div className="heading">
-                Choose the beauty you wish to distroy
+                Choose the beauty you wish to destroy
             </div>
             <div className="flex-container">
                 {itemList}
